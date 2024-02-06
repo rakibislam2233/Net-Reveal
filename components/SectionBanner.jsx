@@ -13,11 +13,11 @@ const SectionBanner = () => {
       }}
       className="w-full h-full mb-10"
     >
-      <div className="w-full md:w-1/2 px-5 py-10 md:px-14 md:py-20 space-y-4">
+      <div className="w-full container mx-auto px-5 py-20 space-y-4">
         <h1 className="text-5xl font-bold">
           The best movie and tv show on your home.
         </h1>
-        <p className="text-xl">
+        <p className="text-xl w-full md:w-1/2">
           Welcome to Net Reveal, your go-to destination for discovering the best
           in movies and TV shows. Whether you are a film buff, TV series
           fanatic, or just looking for your next binge-worthy content, we have

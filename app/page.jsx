@@ -1,8 +1,11 @@
 import Banner from "@/components/Banner/Banner";
+import RecommendedTV from "@/components/RecommendedTV.jsx/RecommendedTV";
 import SectionBanner from "@/components/SectionBanner";
-import ToRatedTV from "@/components/ToPRated/ToRatedTV";
+import TopArtist from "@/components/TopArtist/TopArtist";
+import TopRatedTV from "@/components/TopRated/TopRatedTV";
 import Trending from "@/components/Trending/Trending";
 import UpComing from "@/components/UpComing/UpComing";
+import WatchForFree from "@/components/WatchForFree/WatchForFree";
 const Home = () => {
   return (
     <div>
@@ -10,7 +13,10 @@ const Home = () => {
       <Trending />
       <UpComing />
       <SectionBanner />
-      <ToRatedTV />
+      <TopRatedTV />
+      <WatchForFree />
+      <RecommendedTV />
+      <TopArtist />
     </div>
   );
 };

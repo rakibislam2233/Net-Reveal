@@ -1,41 +1,22 @@
 import imdb from "@/assets/image/imdb.png";
 import play from "@/assets/logo/play.png";
-import { useGetMovieOrTVGenresQuery } from "@/redux/features/api/apiSlice";
 import Image from "next/image";
+import { BsHeartFill, BsPlus, BsShareFill } from "react-icons/bs";
 const formatItems = (items) => {
   return items
     ?.slice(0, 2)
     ?.map((item) => item?.name)
     .join(", ");
 };
-const MovieCard = ({ movie, index }) => {
-  const { data: genreDataMovie } = useGetMovieOrTVGenresQuery("movie");
-  const { id, title, poster_path, genre_ids } = movie;
+const MovieCard = ({ movie, genreDataMovie }) => {
+  const { id, title, poster_path, genre_ids} = movie;
   const genres = genre_ids.map((id) =>
     genreDataMovie?.genres.find((genre) => genre.id === id)
   );
   const genreNames = formatItems(genres);
-  const movieTimes = [
-    "2 hr 25 min",
-    "1 hr 17 min",
-    "3 hr 20 min",
-    "1 hr 10 min",
-    "2 hr 5 min",
-    "3 hr 10 min",
-    "2 hr 55 min",
-    "2 hr 25 min",
-    "1 hr 2 min",
-    "3 hr 56 min",
-    "1 hr 30 min",
-    "2 hr 10 min",
-    "3 hr 00 min",
-    "1 hr 45 min",
-  ];
-  // Use the index to get a unique movie time for each card
-  const selectedMovieTime = movieTimes[index % movieTimes.length];
   return (
-    <div className="w-full h-full p-2 group rounded-xl cursor-grab">
-      <div className="w-full relative overflow-hidden rounded-xl">
+    <div className="w-full h-full p-2 group rounded-xl">
+      <div className="w-full relative overflow-hidden rounded-xl cursor-grab">
         <Image
           className="rounded-xl group-hover:opacity-25 group-hover:scale-105 transition-all duration-300"
           width={500}
@@ -57,12 +38,19 @@ const MovieCard = ({ movie, index }) => {
         </div>
       </div>
       <div className="px-2 py-5 space-y-2">
-        <h1 className="text-2xl font-bold">{title}</h1>
         <div className="flex justify-between items-center">
-          <span>{selectedMovieTime}</span>
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <div className="flex gap-3">
+            <BsHeartFill className="w-4 h-4 hover:text-rose-600 cursor-pointer" />
+            <BsShareFill className="w-4 h-4 hover:text-rose-600 cursor-pointer" />
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <div>
+            <span>{genreNames}</span>
+          </div>
           <Image width={45} height={45} src={imdb} alt="imdb" />
         </div>
-        <p>{genreNames}</p>
       </div>
     </div>
   );

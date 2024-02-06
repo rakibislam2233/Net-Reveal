@@ -2,6 +2,7 @@
 import { useGetUpcomingMoviesQuery } from "@/redux/features/api/apiSlice";
 import Carasoul from "../shared/Carasoul";
 import MovieCard from "../shared/MovieCard";
+import SectionTitle from "../shared/SectionTitle";
 
 const UpComing = () => {
   const {
@@ -12,7 +13,7 @@ const UpComing = () => {
   const randomIndices = upComingMovies?.results?.map((_, index) => index);
   return (
     <div className="w-full container mx-auto px-3 mt-[50px]">
-      <h1 className="text-3xl font-bold">UpComing Movies</h1>
+      <SectionTitle title={'UpComing Movies'} path={'/'}/>
       <Carasoul>
         {upComingMovies?.results?.map((upComingMovie, index) => (
           <MovieCard

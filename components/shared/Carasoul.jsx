@@ -2,13 +2,13 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const Carasoul = ({ children }) => {
+const Carasoul = ({ children, slide, smSlide, mdSlide, lgSlide }) => {
   const settings = {
     dots: false,
     arrows: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 4,
+    slidesToShow: lgSlide ? lgSlide : 4,
     slidesToScroll: 3,
     autoplay: true,
     autoplaySpeed: 5000,
@@ -17,7 +17,7 @@ const Carasoul = ({ children }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: lgSlide ? lgSlide : 4,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -26,7 +26,7 @@ const Carasoul = ({ children }) => {
       {
         breakpoint: 820,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: mdSlide ? mdSlide : 2,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -35,14 +35,14 @@ const Carasoul = ({ children }) => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: smSlide ? smSlide : 2,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: slide ? slide : 1,
           slidesToScroll: 1,
         },
       },

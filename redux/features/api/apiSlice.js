@@ -73,6 +73,13 @@ export const apiSlice = createApi({
     getMovieOrTvCast: builder.query({
       query: ({ type, id }) => ({
         url: `${type}/${id}/credits?api_key=b07785a918a90e5816110d5e6e835fd2`,
+        method: "GET",
+      }),
+    }),
+    getRecommendedTvShow: builder.query({
+      query: () => ({
+        url: `tv/on_the_air?api_key=b07785a918a90e5816110d5e6e835fd2`,
+        method: "GET",
       }),
     }),
   }),
@@ -89,5 +96,6 @@ export const {
   useGetMovieOrTvSearchQuery,
   useGetMovieOrTvKeywordsQuery,
   useGetMovieOrTvCastQuery,
-  useGetTrendingMovieOrTvQuery
+  useGetTrendingMovieOrTvQuery,
+  useGetRecommendedTvShowQuery
 } = apiSlice;
