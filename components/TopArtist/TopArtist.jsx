@@ -1,13 +1,10 @@
-"use client";
-import { useGetMovieOrTvCastQuery } from "@/redux/features/api/apiSlice";
 import Carasoul from "../shared/Carasoul";
 import ArtistCard from "../shared/ArtistCard";
+import { getMovieOrTvCast } from "@/lib/api";
 
-const TopArtist = () => {
-  const { data: credits } = useGetMovieOrTvCastQuery({
-    type: "movie",
-    id: "500",
-  });
+const TopArtist = async () => {
+  const credits = await getMovieOrTvCast({ type: "movie", id: "500" });
+  console.log(credits);
   const artists = credits?.cast?.filter(
     (credit) => credit?.profile_path !== null
   );

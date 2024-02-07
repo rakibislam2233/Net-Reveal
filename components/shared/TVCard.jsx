@@ -1,39 +1,19 @@
-"use client";
 import Image from "next/image";
-import imdb from "@/assets/image/imdb.png";
 import play from "@/assets/logo/play.png";
-import { useGetMovieOrTVGenresQuery } from "@/redux/features/api/apiSlice";
 import { BsHeartFill, BsShareFill } from "react-icons/bs";
+import { ReactRating } from "./Rating";
 const formatItems = (items) => {
   return items
     ?.slice(0, 2)
     ?.map((item) => item?.name)
     .join(", ");
 };
-const TVCard = ({ movie, index }) => {
-  const { data: genreDataTv } = useGetMovieOrTVGenresQuery("tv");
-  const { id, name, poster_path, genre_ids } = movie;
+const TVCard = ({ movie,genreDataTv}) => {
+  const { id, name, poster_path, genre_ids,vote_average } = movie;
   const genres = genre_ids.map((id) =>
     genreDataTv?.genres.find((genre) => genre.id === id)
   );
   const genreNames = formatItems(genres);
-  const tvShowSeason = [
-    "3 Seasons",
-    "1 Seasons",
-    "2 Seasons",
-    "5 Seasons",
-    "8 Seasons",
-    "2 Seasons",
-    "3 Seasons",
-    "1 Seasons",
-    "6 Seasons",
-    "8 Seasons",
-    "10 Seasons",
-    "9 Seasons",
-    "3 Seasons",
-    "1 Seasons",
-  ];
-  const selectedTVSeason = tvShowSeason[index % tvShowSeason.length];
   return (
     <div className="w-full h-full p-2 group rounded-xl">
       <div className="w-full relative overflow-hidden rounded-xl cursor-grab ">
@@ -65,14 +45,10 @@ const TVCard = ({ movie, index }) => {
             <BsShareFill className="w-4 h-4 hover:text-rose-600 cursor-pointer" />
           </div>
         </div>
-        <div className="flex justify-between items-center">
-          <span>{selectedTVSeason}</span>
-          <Image width={45} height={45} src={imdb} alt="imdb" />
-        </div>
         <p>{genreNames}</p>
+        <ReactRating value={vote_average.toFixed(2)}/>
       </div>
     </div>
   );
 };
-
 export default TVCard;

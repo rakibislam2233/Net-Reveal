@@ -9,7 +9,6 @@ import {
 const Movies = () => {
   const { data: movies } = useGetPopularMoviesOrTVQuery("movie");
   const { data: tvShow } = useGetPopularMoviesOrTVQuery("tv");
-  console.log(tvShow);
   return (
     <div className="grid grid-cols-2 gap-10 text-white">
       <div>

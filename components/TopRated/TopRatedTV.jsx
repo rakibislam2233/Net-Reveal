@@ -1,15 +1,10 @@
-"use client";
-import { useGetTopRatedMoviesOrTVQuery } from "@/redux/features/api/apiSlice";
 import Carasoul from "../shared/Carasoul";
 import SectionTitle from "../shared/SectionTitle";
 import TVCard from "../shared/TVCard";
-const TopRatedTV = () => {
-  const {
-    isLoading,
-    isSuccess,
-    data: topRatedTVs = [],
-  } = useGetTopRatedMoviesOrTVQuery("tv");
-  const randomIndices = topRatedTVs?.results?.map((_, index) => index);
+import { getMovieOrTVGenres, getTopRatedMoviesOrTV } from "@/lib/api";
+const TopRatedTV = async() => {
+  const topRatedTVs = await getTopRatedMoviesOrTV("tv");
+  const genreDataTv = await getMovieOrTVGenres("tv");
   return (
     <div className="w-full container mx-auto px-3 mt-[50px]">
       <SectionTitle title={"Top Tv Show"} path={"/"} />
@@ -18,7 +13,7 @@ const TopRatedTV = () => {
           <TVCard
             key={topRatedTV.id}
             movie={topRatedTV}
-            index={randomIndices[index]}
+            genreDataTv={genreDataTv}
           />
         ))}
       </Carasoul>

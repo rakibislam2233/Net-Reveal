@@ -1,10 +1,9 @@
-"use client";
-import { useGetPopularMoviesOrTVQuery } from "@/redux/features/api/apiSlice";
 import Image from "next/image";
 import play from "@/assets/logo/play.png";
 import SectionTitle from "../shared/SectionTitle";
-const WatchForFree = () => {
-  const { data } = useGetPopularMoviesOrTVQuery("tv");
+import { getPopularMoviesOrTV } from "@/lib/api";
+const WatchForFree = async () => {
+  const data = await getPopularMoviesOrTV('tv')
   const results = data?.results || [];
   return (
     <div className="w-full container mx-auto px-3 mt-[50px]">

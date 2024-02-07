@@ -9,7 +9,7 @@ const Trending = async () => {
     <div className="w-full container mx-auto px-3 mt-[50px]">
       <SectionTitle title={"Trending"} path={"/"} />
       <Carasoul>
-        {trendingMovies?.results?.map((trendingMovie, index) => (
+        {trendingMovies?.results?.map((trendingMovie) => (
           <MovieCard
             key={trendingMovie.id}
             movie={trendingMovie}

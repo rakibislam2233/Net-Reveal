@@ -2,11 +2,12 @@ import Image from "next/image";
 import play from "@/assets/logo/play.png";
 import { BsBookmark } from "react-icons/bs";
 import imdb from "@/assets/image/imdb.png";
-import { ReactRating } from "../shared/Rating";
+import { FaStar } from "react-icons/fa";
+import PlayTrailer from "../shared/PlayTrailer";
 const BannerDetails = ({ movie }) => {
-  const { title, poster_path, overview, vote_average } = movie;
+  const { id,title, poster_path, overview, vote_average } = movie;
   return (
-    <div key={movie.id} className="cursor-pointer">
+    <div key={id} className="cursor-pointer">
       <div
         className="w-full h-[90vh] lg:h-screen bg-gray-900  bg-opacity-90 "
         style={{
@@ -31,19 +32,24 @@ const BannerDetails = ({ movie }) => {
               TV-MA
             </div>
             <Image width={45} height={45} src={imdb} alt="imdb" />
-            <span>{vote_average.toFixed(2)}</span>
+            <div className="flex gap-2">
+              <FaStar className="w-5 h-5 text-yellow-500" />
+              <span>{vote_average.toFixed(2)}</span>
+            </div>
           </div>
           <div className="pt-5 flex gap-5">
-            <button className="px-8 py-2 flex justify-center items-center gap-2 border bg-teal-500 border-teal-500 hover:bg-transparent hover:border-white rounded-xl transition-all duration-500">
-              <Image
-                className="animate-pulse"
-                width={30}
-                height={30}
-                src={play}
-                alt="play"
-              />
-              Play Now
-            </button>
+            <PlayTrailer id={id}>
+              <button className="px-8 py-2 flex justify-center items-center gap-2 border bg-teal-500 border-teal-500 hover:bg-transparent hover:border-white rounded-xl transition-all duration-500">
+                <Image
+                  className="animate-pulse"
+                  width={30}
+                  height={30}
+                  src={play}
+                  alt="play"
+                />
+                Play Now
+              </button>
+            </PlayTrailer>
             <button className="px-8 py-2 flex justify-center items-center gap-2 border rounded-xl hover:bg-teal-500 hover:border-teal-500 transition-all duration-500">
               Watch Later
               <BsBookmark />
