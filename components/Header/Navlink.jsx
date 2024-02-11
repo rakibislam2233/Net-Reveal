@@ -14,7 +14,7 @@ const Navlink = () => {
       <li>
         <BsPersonCircle className="w-7 h-7" />
       </li>
-      <button className="px-5 py-2 bg-teal-500 rounded-xl">Subscribe</button>
+      <button className="px-5 py-2 bg-teal-500">Subscribe</button>
     </ul>
   );
 };

@@ -23,7 +23,7 @@ const SectionBanner = () => {
           fanatic, or just looking for your next binge-worthy content, we have
           got you covered.
         </p>
-        <button className="px-8 py-2 flex justify-center items-center gap-2 border bg-teal-500 border-teal-500 hover:bg-transparent hover:border-white rounded-xl transition-all duration-500">
+        <button className="px-8 py-2 flex justify-center items-center gap-2 border bg-teal-500 border-teal-500 hover:bg-transparent hover:border-white transition-all duration-500">
           <Image
             className="animate-pulse"
             width={30}

@@ -14,7 +14,7 @@ const SearchQuery = () => {
         name="search"
         id="search"
         placeholder="Find movies or tv show"
-        className="w-full px-3 py-2 bg-transparent border rounded-xl focus:outline-none"
+        className="w-full px-3 py-2 bg-transparent border focus:outline-none"
       />
     </form>
   );
